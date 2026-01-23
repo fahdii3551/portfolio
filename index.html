@@ -1496,7 +1496,6 @@
    <div id="contact" class="contact-style-one-area default-padding bg-gray">
     <div class="container">
         <div class="contact-style-one-items">
-            
             <h1 class="fixed-text">Contact Me</h1>
             <div class="row">
                 <div class="col-lg-6">
@@ -1543,49 +1542,47 @@
                     </form>
                 </div>
             </div>
-
             <div class="contact-illustration">
                 <img src="assets/img/illustration/5.png" alt="Image Not Found">
                 <img src="assets/img/shape/13.png" alt="Image Not Found">
             </div>
-
         </div>
     </div>
 </div>
-                <script>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
     $(document).ready(function() {
         $('#contact-form').on('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // This line prevents the redirection to Formspree
             
             var form = $(this);
-            var message = $('#message');
+            var messageBox = $('#message');
             var submitBtn = $('#submit');
 
-            // 1. Exact Original Animation: Slide Up & Show Loader
-            message.slideUp(750, function() {
-                message.hide();
-
-                // Adds the loader GIF exactly where your template placed it
+            // 1. Show the loading animation exactly like your original template
+            messageBox.slideUp(750, function() {
+                messageBox.hide();
                 submitBtn.attr('disabled', 'disabled')
                     .after('<img src="assets/img/ajax-loader.gif" class="loader" style="margin-left:15px; vertical-align: middle;" />');
 
-                // 2. AJAX to Formspree
+                // 2. Send the data silently using AJAX
                 $.ajax({
                     url: form.attr('action'),
                     method: 'POST',
                     data: form.serialize(),
                     dataType: 'json',
                     success: function() {
-                        // Mimics your original PHP success message design
-                        message.html("<div class='alert alert-success'><h3>Email Sent Successfully.</h3><p>Thank you, your message has been submitted to us.</p></div>");
-                        message.slideDown('slow');
+                        // Show the Success message using your original CSS classes
+                        messageBox.html("<div class='alert alert-success'><h3>Email Sent Successfully.</h3><p>Thank you, your message has been submitted to us.</p></div>");
+                        messageBox.slideDown('slow');
                         form[0].reset();
                         finish();
                     },
                     error: function() {
-                        // Mimics your original PHP error message design
-                        message.html("<div class='alert alert-error'>Something went wrong. Please try again.</div>");
-                        message.slideDown('slow');
+                        // Show Error message if something goes wrong
+                        messageBox.html("<div class='alert alert-error'>Oops! There was a problem. Please try again.</div>");
+                        messageBox.slideDown('slow');
                         finish();
                     }
                 });
