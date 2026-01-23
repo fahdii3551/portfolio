@@ -383,6 +383,7 @@
                 <div class="col-md-12 gallery-content">
                     <div class="magnific-mix-gallery gallery-masonary">
                         <div id="gallery-masonary" class="gallery-items colums-3">
+                            <!-- Single Item -->
                             <div class="gallery-item">
     <div class="gallery-style-one">
         <img src="assets/img/projects/acssllcabudhabi.png" alt="Thumb">
@@ -414,17 +415,20 @@
                     <img src="assets/img/projects/slide2.png"> 
                     <img src="assets/img/projects/slide3.png">
                 </div>
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                
+                <button class="nav-arrow prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-arrow next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
             <div class="project-description">
                 <h2>Acssllc Abudhabi</h2>
                 <p class="project-meta">Category: <span>Web Development & Security</span></p>
-                <hr class="dark-hr">
                 <div class="details">
                     <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services in Abu Dhabi.</p>
-                    <p>Key features include service categorization, a dynamic brand slider, and a professional consultation lead form.</p>
                 </div>
                 
                 <div class="tech-tags">
@@ -440,141 +444,140 @@
 </div>
 
 <style>
-/* --- Modal Background Overlay --- */
+/* --- Backdrop with Blur --- */
 .custom-modal {
     display: none; 
     position: fixed;
-    z-index: 10000;
+    z-index: 99999;
     left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Darker Overlay */
-    backdrop-filter: blur(10px); /* Stronger Blur */
-    overflow-y: auto;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
 }
 
-/* --- Full Screen Modal Container --- */
+/* --- Centered Extra-Large Container --- */
 .modal-content {
-    position: relative;
-    background-color: #111; /* Dark Background */
-    margin: 2vh auto;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%); /* Perfect Center */
+    background-color: #151515; /* Deep Dark Grey/Black */
     width: 95%;
-    max-width: 1300px;
-    min-height: 85vh;
+    max-width: 1400px; /* Bigger width */
+    height: 85vh; /* Bigger height */
     border-radius: 10px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-    animation: zoomIn 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    border: 1px solid #333;
 }
 
 .modal-body {
     display: flex;
-    flex: 1;
-    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
 
-/* --- Image Slider Styling --- */
+/* --- Slider Section --- */
 .project-slider {
-    flex: 1.6;
+    flex: 1.8;
     background: #000;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slides { width: 100%; text-align: center; }
+.slides img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: none;
+    margin: auto;
+    object-fit: contain;
+}
+.slides img.active-slide { display: block; }
+
+/* --- Custom Arrow Buttons (Matching your image) --- */
+.nav-arrow {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    width: 50px; height: 80px;
+    cursor: pointer;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #222;
+    transition: 0.3s;
+    /* Creating the orange corner accents */
+    border-top: 3px solid #ff6600;
+    border-bottom: 3px solid #ff6600;
 }
+.nav-arrow:hover { background: #333; }
+.prev { left: 0; border-radius: 0 10px 10px 0; }
+.next { right: 0; border-radius: 10px 0 0 10px; }
 
-.slides { width: 100%; height: 100%; display: flex; align-items: center; }
-
-.slides img {
-    width: 100%;
-    display: none;
-    height: auto;
-    max-height: 80vh;
-    object-fit: contain;
-    padding: 20px;
-}
-
-.slides img.active-slide { display: block; }
-
-/* --- Description Styling (Dark Theme) --- */
+/* --- Description Section --- */
 .project-description {
     flex: 1;
-    padding: 60px 40px;
-    background: #111;
-    color: #eee;
+    padding: 60px;
+    background: #151515;
+    color: #ffffff;
+    border-left: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.project-description h2 { font-size: 32px; margin-bottom: 5px; color: #fff; }
-.project-meta { color: #888; font-size: 14px; margin-bottom: 25px; }
-.project-meta span { color: #ff6600; }
-.dark-hr { border: 0; border-top: 1px solid #222; margin-bottom: 25px; }
+.project-description h2 { font-size: 38px; margin-bottom: 10px; }
+.project-meta span { color: #ff6600; font-weight: bold; }
 
-.details p { line-height: 1.8; color: #ccc; margin-bottom: 20px; }
+.details p { font-size: 17px; line-height: 1.8; color: #bbb; margin-top: 20px; }
 
-.tech-tags { margin-bottom: 30px; }
+.tech-tags { margin: 30px 0; }
 .tech-tags span {
-    display: inline-block;
-    background: #222;
-    color: #fff;
-    padding: 6px 15px;
-    margin: 5px 5px 5px 0;
+    background: #252525;
+    padding: 8px 18px;
+    margin-right: 10px;
     border-radius: 4px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #333;
 }
 
 .btn-visit {
-    display: inline-block;
-    padding: 15px 35px;
-    background: #ff6600; 
+    background: #ff6600;
     color: #fff;
+    padding: 18px 40px;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: 700;
-    transition: 0.3s ease;
-}
-.btn-visit:hover { background: #e65c00; transform: translateY(-2px); }
-
-/* --- UI Controls --- */
-.close-modal { 
-    position: absolute; 
-    right: 25px; 
-    top: 20px; 
-    font-size: 40px; 
-    cursor: pointer; 
-    z-index: 100; 
-    color: #fff; 
-    opacity: 0.7;
+    font-weight: bold;
+    text-align: center;
+    align-self: flex-start;
     transition: 0.3s;
 }
-.close-modal:hover { opacity: 1; }
+.btn-visit:hover { background: #e65c00; transform: scale(1.05); }
 
-.prev, .next {
+/* Close Button */
+.close-modal {
     position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.1);
-    color: white; border: none; 
-    padding: 20px 15px; 
-    cursor: pointer; 
-    transition: 0.3s;
-    font-size: 24px;
-    z-index: 5;
+    right: 30px; top: 20px;
+    font-size: 45px;
+    color: #666;
+    cursor: pointer;
+    z-index: 10;
 }
-.prev:hover, .next:hover { background: #ff6600; }
-.next { right: 0; border-radius: 5px 0 0 5px; }
-.prev { left: 0; border-radius: 0 5px 5px 0; }
+.close-modal:hover { color: #fff; }
 
-/* --- Animations & Mobile --- */
-@keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-@media (max-width: 991px) {
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .modal-content { height: 95vh; width: 98%; }
     .modal-body { flex-direction: column; }
-    .project-slider { border-right: none; border-bottom: 1px solid #222; }
-    .project-description { padding: 40px 20px; }
-    .modal-content { margin: 0; width: 100%; border-radius: 0; height: 100%; }
+    .project-slider { flex: 1; }
+    .project-description { padding: 30px; }
 }
 </style>
 
@@ -583,26 +586,23 @@ let currentSlide = 0;
 
 function openProjectModal() {
     document.getElementById("projectModal").style.display = "block";
-    document.body.style.overflow = "hidden"; 
+    document.body.style.overflow = "hidden";
 }
 
 function closeProjectModal() {
     document.getElementById("projectModal").style.display = "none";
-    document.body.style.overflow = "auto"; 
+    document.body.style.overflow = "auto";
 }
 
 function changeSlide(n) {
     const slides = document.querySelectorAll(".slides img");
-    if (slides.length === 0) return;
-
     slides[currentSlide].classList.remove("active-slide");
     currentSlide = (currentSlide + n + slides.length) % slides.length;
     slides[currentSlide].classList.add("active-slide");
 }
 
 window.onclick = function(event) {
-    let modal = document.getElementById("projectModal");
-    if (event.target == modal) {
+    if (event.target == document.getElementById("projectModal")) {
         closeProjectModal();
     }
 }
