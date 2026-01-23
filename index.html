@@ -410,10 +410,10 @@
         
         <div class="modal-body">
             <div class="project-slider">
-                <div class="slides">
-                    <img src="assets/img/projects/acssllcabudhabi.png" class="active-slide">
-                    <img src="assets/img/projects/slide2.png"> 
-                    <img src="assets/img/projects/slide3.png">
+                <div class="slides" id="lightgallery">
+                    <img src="assets/img/projects/acssllcabudhabi.png" class="active-slide zoomable" onclick="zoomImage(this)">
+                    <img src="assets/img/projects/slide2.png" class="zoomable" onclick="zoomImage(this)"> 
+                    <img src="assets/img/projects/slide3.png" class="zoomable" onclick="zoomImage(this)">
                 </div>
                 
                 <button class="nav-arrow prev" onclick="changeSlide(-1)">
@@ -422,13 +422,16 @@
                 <button class="nav-arrow next" onclick="changeSlide(1)">
                     <i class="fas fa-chevron-right"></i>
                 </button>
+                
+                <p class="zoom-hint"><i class="fas fa-search-plus"></i> Click image to zoom</p>
             </div>
 
             <div class="project-description">
                 <h2>Acssllc Abudhabi</h2>
                 <p class="project-meta">Category: <span>Web Development & Security</span></p>
+                <hr class="dark-hr">
                 <div class="details">
-                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services in Abu Dhabi.</p>
+                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services.</p>
                 </div>
                 
                 <div class="tech-tags">
@@ -443,62 +446,83 @@
     </div>
 </div>
 
+<div id="zoomOverlay" class="zoom-overlay" onclick="closeZoom()">
+    <img id="zoomedImg" src="">
+</div>
+
 <style>
-/* --- Backdrop with Blur --- */
+/* --- Modal Backdrop --- */
 .custom-modal {
     display: none; 
     position: fixed;
     z-index: 99999;
     left: 0; top: 0;
     width: 100vw; height: 100vh;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(12px);
-    overflow: hidden;
 }
 
 /* --- Centered Extra-Large Container --- */
 .modal-content {
     position: absolute;
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%); /* Perfect Center */
-    background-color: #151515; /* Deep Dark Grey/Black */
+    transform: translate(-50%, -50%);
+    background-color: #151515;
     width: 95%;
-    max-width: 1400px; /* Bigger width */
-    height: 85vh; /* Bigger height */
+    max-width: 1400px;
+    height: 85vh;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    overflow: hidden;
     border: 1px solid #333;
+    animation: zoomIn 0.3s ease-out;
 }
 
-.modal-body {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
+.modal-body { display: flex; width: 100%; height: 100%; }
 
-/* --- Slider Section --- */
+/* --- Slider & Zoomable Image --- */
 .project-slider {
     flex: 1.8;
     background: #000;
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.slides { width: 100%; text-align: center; }
 .slides img {
     max-width: 100%;
     max-height: 80vh;
     display: none;
-    margin: auto;
     object-fit: contain;
+    cursor: zoom-in; /* Shows user they can click */
+    transition: transform 0.3s ease;
 }
-.slides img.active-slide { display: block; }
 
-/* --- Custom Arrow Buttons (Matching your image) --- */
+.slides img.active-slide { display: block; }
+.slides img:hover { transform: scale(1.02); }
+
+/* --- Zoom Overlay (Fullscreen) --- */
+.zoom-overlay {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    cursor: zoom-out;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom-overlay img {
+    max-width: 95%;
+    max-height: 95%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: scaleEffect 0.3s ease;
+}
+
+/* --- Arrows (Matching your style) --- */
 .nav-arrow {
     position: absolute;
     top: 50%; transform: translateY(-50%);
@@ -507,76 +531,59 @@
     border: none;
     width: 50px; height: 80px;
     cursor: pointer;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-    /* Creating the orange corner accents */
     border-top: 3px solid #ff6600;
     border-bottom: 3px solid #ff6600;
+    z-index: 5;
 }
-.nav-arrow:hover { background: #333; }
 .prev { left: 0; border-radius: 0 10px 10px 0; }
 .next { right: 0; border-radius: 10px 0 0 10px; }
 
-/* --- Description Section --- */
+/* --- Description --- */
 .project-description {
     flex: 1;
     padding: 60px;
     background: #151515;
-    color: #ffffff;
+    color: #fff;
     border-left: 1px solid #222;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-.project-description h2 { font-size: 38px; margin-bottom: 10px; color:white; }
-.project-meta span { color: #ff6600; font-weight: bold; }
-
-.details p { font-size: 17px; line-height: 1.8; color: #bbb; margin-top: 20px; }
-
-.tech-tags { margin: 30px 0; }
+.project-meta span { color: #ff6600; }
 .tech-tags span {
+    display: inline-block;
     background: #252525;
     padding: 8px 18px;
-    margin-right: 10px;
+    margin: 5px;
     border-radius: 4px;
-    font-size: 13px;
-    color: #fff;
     border: 1px solid #333;
 }
 
 .btn-visit {
+    display: inline-block;
     background: #ff6600;
     color: #fff;
-    padding: 18px 40px;
+    padding: 15px 35px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    text-align: center;
-    align-self: flex-start;
-    transition: 0.3s;
+    margin-top: 20px;
 }
-.btn-visit:hover { background: #e65c00; transform: scale(1.05); }
 
-/* Close Button */
-.close-modal {
+.zoom-hint {
     position: absolute;
-    right: 30px; top: 20px;
-    font-size: 45px;
+    bottom: 20px;
     color: #666;
-    cursor: pointer;
-    z-index: 10;
+    font-size: 12px;
 }
-.close-modal:hover { color: #fff; }
 
-/* --- Responsive Adjustments --- */
+/* Close UI */
+.close-modal { position: absolute; right: 25px; top: 15px; font-size: 40px; color: #666; cursor: pointer; z-index: 100; }
+
+/* Animations */
+@keyframes zoomIn { from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes scaleEffect { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
 @media (max-width: 1024px) {
-    .modal-content { height: 95vh; width: 98%; }
     .modal-body { flex-direction: column; }
-    .project-slider { flex: 1; }
     .project-description { padding: 30px; }
 }
 </style>
@@ -601,6 +608,19 @@ function changeSlide(n) {
     slides[currentSlide].classList.add("active-slide");
 }
 
+// --- Zoom Functions ---
+function zoomImage(imgElement) {
+    const overlay = document.getElementById("zoomOverlay");
+    const zoomedImg = document.getElementById("zoomedImg");
+    zoomedImg.src = imgElement.src;
+    overlay.style.display = "flex";
+}
+
+function closeZoom() {
+    document.getElementById("zoomOverlay").style.display = "none";
+}
+
+// Close modal if clicking background
 window.onclick = function(event) {
     if (event.target == document.getElementById("projectModal")) {
         closeProjectModal();
