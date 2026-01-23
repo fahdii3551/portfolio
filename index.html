@@ -1493,11 +1493,12 @@
 
     <!-- Start Contact 
     ============================================= -->
-    <form action="https://formspree.io/f/mjgyypor" method="POST" id="contact-form" class="contact-form">
+   <form action="https://formspree.io/f/mjgyypor" method="POST" id="contact-form" class="contact-form">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
                 <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                <span class="alert-error"></span>
             </div>
         </div>
     </div>
@@ -1505,11 +1506,13 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <input class="form-control" id="email" name="email" placeholder="Email*" type="email" required>
+                <span class="alert-error"></span>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
                 <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
+                <span class="alert-error"></span>
             </div>
         </div>
     </div>
@@ -1522,47 +1525,52 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <button class="btn-style-regular" type="submit" id="submit">
+            <button class="btn-style-regular" type="submit" name="submit" id="submit">
                 <span>Get in Touch</span> <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </div>
-    <div class="col-lg-12 alert-notification" style="margin-top: 20px;">
+    <div class="col-lg-12 alert-notification">
         <div id="message" class="alert-msg"></div>
     </div>
 </form>
-                <script>
-  const form = document.getElementById("contact-form");
-  const messageBox = document.getElementById("message");
+                
+<script>
+    const contactForm = document.getElementById('contact-form');
+    const messageBox = document.getElementById('message');
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    
-    // Show "Sending..." using your template's style
-    messageBox.innerHTML = "Sending...";
-    messageBox.style.display = "block";
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show "Sending..." using template styles
+        messageBox.style.display = "block";
+        messageBox.innerHTML = "Sending...";
 
-    fetch(event.target.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        // SUCCESS: Use your template's "alert-success" class
-        messageBox.innerHTML = "<div class='alert alert-success'><h3>Email Sent Successfully.</h3><p>Thank you, your message has been submitted to us.</p></div>";
-        form.reset();
-      } else {
-        // ERROR: Use your template's "alert-error" class
-        messageBox.innerHTML = "<div class='alert alert-error'>Oops! There was a problem submitting your form.</div>";
-      }
-    }).catch(error => {
-      messageBox.innerHTML = "<div class='alert alert-error'>Connection error. Please try again.</div>";
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Exact Success HTML from your PHP file
+                messageBox.innerHTML = `
+                    <div class='alert alert-success'>
+                        <h3>Email Sent Successfully.</h3>
+                        <p>Thank you, your message has been submitted to us.</p>
+                    </div>`;
+                contactForm.reset();
+            } else {
+                messageBox.innerHTML = "<div class='alert alert-error'>Something went wrong. Please try again.</div>";
+            }
+        } catch (error) {
+            messageBox.innerHTML = "<div class='alert alert-error'>Connection error. Check your internet.</div>";
+        }
     });
-  }
-  form.addEventListener("submit", handleSubmit);
 </script>
-
    
 
     <!-- Start Promo box
