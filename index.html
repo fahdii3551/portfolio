@@ -411,9 +411,8 @@
         <div class="modal-body">
             <div class="project-slider">
                 <div class="slides" id="lightgallery">
-                    <img src="assets/img/projects/screencapture-acssllcabudhabi-about-us-2025-11-06-12_09_11.png" class="active-slide zoomable" onclick="zoomImage(this)">
-                    <img src="assets/img/projects/slide2.png" class="zoomable" onclick="zoomImage(this)"> 
-                    <img src="assets/img/projects/slide3.png" class="zoomable" onclick="zoomImage(this)">
+                    <img src="assets/img/projects/screencapture-acssllcabudhabi-2026-01-23-22_44_59.png" class="active-slide zoomable" onclick="zoomImage(this)">
+                    <img src="assets/img/projects/screencapture-acssllcabudhabi-about-us-2025-11-06-12_09_11.png" class="zoomable" onclick="zoomImage(this)"> 
                 </div>
                 
                 <button class="nav-arrow prev" onclick="changeSlide(-1)">
@@ -453,14 +452,22 @@
 <style>
 /* --- Modal Backdrop --- */
 .custom-modal {
-    display: none; 
+    display: none;
     position: fixed;
     z-index: 99999;
-    left: 0; top: 0;
-    width: 100vw; height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /* Transparent dark overlay */
+    background-color: rgba(0, 0, 0, 0.4);
+
+    /* Blur effect */
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
+
 
 /* --- Centered Extra-Large Container --- */
 .modal-content {
