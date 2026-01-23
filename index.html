@@ -384,29 +384,195 @@
                     <div class="magnific-mix-gallery gallery-masonary">
                         <div id="gallery-masonary" class="gallery-items colums-3">
                             <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/acssllcabudhabi.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Web</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Coding</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://acssllcabudhabi.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Acssllc Abudhabi</a></h4>
-                                    </div>
-                                </div>
-                            </div>
+                           <div class="gallery-item">
+    <div class="gallery-style-one">
+        <img src="assets/img/projects/acssllcabudhabi.png" alt="Thumb">
+        <div class="info">
+            <div class="overlay">
+                <div class="content">
+                    <ul class="pf-tags">
+                        <li><a href="#">Web</a></li>
+                        <li><a href="#">Coding</a></li>
+                    </ul>
+                </div>
+                <div class="icon">
+                    <a href="javascript:void(0)" onclick="openProjectModal()"><i class="fas fa-long-arrow-right"></i></a>
+                </div>
+            </div>
+            <h4><a href="javascript:void(0)" onclick="openProjectModal()">Acssllc Abudhabi</a></h4>
+        </div>
+    </div>
+</div>
+
+<div id="projectModal" class="custom-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        
+        <div class="modal-body">
+            <div class="project-slider">
+                <div class="slides">
+                    <img src="assets/img/projects/acssllcabudhabi.png" class="active-slide">
+                    <img src="assets/img/projects/slide2.png"> 
+                    <img src="assets/img/projects/slide3.png">
+                </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+
+            <div class="project-description">
+                <h2>Acssllc Abudhabi</h2>
+                <p class="project-meta"><strong>Category:</strong> Web Development & Security</p>
+                <hr>
+                <div class="details">
+                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services in Abu Dhabi.</p>
+                    <p>Key features include service categorization, a dynamic brand slider, and a professional consultation lead form.</p>
+                </div>
+                
+                <div class="tech-tags">
+                    <span>HTML5</span>
+                    <span>Bootstrap</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="https://acssllcabudhabi.com/" target="_blank" class="btn-visit">View Live Project</a>
+            </div>
+        </div>
+    </div>
+</div>
+                            <style>
+                                /* Modal Background Overlay */
+.custom-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+}
+
+/* Modal Box Container */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5vh auto;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    animation: slideUp 0.4s ease-out;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    min-height: 500px;
+}
+
+/* Image Slider Styling */
+.project-slider {
+    flex: 1.4;
+    background: #111;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+.slides img.active-slide { display: block; }
+
+/* Description Styling */
+.project-description {
+    flex: 1;
+    padding: 50px;
+    background: #fff;
+    color: #333;
+}
+
+.project-description h2 { font-size: 28px; margin-bottom: 10px; color: #111; }
+.project-meta { color: #888; margin-bottom: 20px; }
+.tech-tags span {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 5px 12px;
+    margin: 5px 5px 20px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-visit {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ff6600; /* Adjust to match your theme color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Navigation Buttons */
+.close-modal { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; z-index: 100; color: #333; }
+.prev, .next {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: white; border: none; padding: 15px; cursor: pointer; transition: 0.3s;
+}
+.next { right: 0; }
+.prev:hover, .next:hover { background: rgba(255,255,255,0.5); }
+
+/* Animations & Responsive */
+@keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 850px) {
+    .modal-body { flex-direction: column; }
+    .modal-content { width: 95%; margin: 2vh auto; overflow-y: auto; max-height: 95vh; }
+}
+
+                                
+                            </style>
+
+
+                            <script>
+                                let currentSlide = 0;
+
+function openProjectModal() {
+    document.getElementById("projectModal").style.display = "block";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+}
+
+function closeProjectModal() {
+    document.getElementById("projectModal").style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+}
+
+function changeSlide(n) {
+    const slides = document.querySelectorAll(".slides img");
+    if (slides.length === 0) return;
+
+    slides[currentSlide].classList.remove("active-slide");
+    currentSlide = (currentSlide + n + slides.length) % slides.length;
+    slides[currentSlide].classList.add("active-slide");
+}
+
+// Close Modal if user clicks on the dark background
+window.onclick = function(event) {
+    let modal = document.getElementById("projectModal");
+    if (event.target == modal) {
+        closeProjectModal();
+    }
+}
+                            </script>
                             <!-- End Single Item -->
                             <!-- Single Item -->
                             <div class="gallery-item">
