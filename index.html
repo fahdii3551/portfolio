@@ -460,7 +460,7 @@
     height: 100vh;
 
     /* Black but not overpowering */
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.65);
 
     /* Blur */
     backdrop-filter: blur(12px);
@@ -468,7 +468,6 @@
 }
 
 
-/* --- Centered Extra-Large Container --- */
 .modal-content {
     position: absolute;
     top: 50%; left: 50%;
@@ -486,7 +485,6 @@
 
 .modal-body { display: flex; width: 100%; height: 100%; }
 
-/* --- Slider Section --- */
 .project-slider {
     flex: 1.8;
     background: #000;
@@ -502,13 +500,11 @@
     display: none;
     object-fit: contain;
     cursor: zoom-in;
-    transition: transform 0.3s ease;
 }
 
 .slides img.active-slide { display: block; }
-.slides img:hover { transform: scale(1.02); }
 
-/* --- ENHANCED ZOOM OVERLAY --- */
+/* --- REFINED ZOOM OVERLAY --- */
 .zoom-overlay {
     display: none;
     position: fixed;
@@ -516,26 +512,25 @@
     left: 0; top: 0;
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.95);
-    align-items: center;
-    justify-content: center;
-    overflow: auto; /* Allows scrolling when deep-zoomed */
+    overflow: auto; /* Allows scrolling naturally */
     cursor: pointer;
+    padding: 40px;
 }
 
 .zoom-overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    margin: auto;
+    max-width: 90%; /* Initial "Fit to screen" look */
+    max-height: 90vh;
+    transition: max-width 0.3s ease, max-height 0.3s ease;
     cursor: zoom-in;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    margin: auto;
 }
 
-/* Deep Zoom state triggered by JS */
+/* Deep Zoom: Shows image at its real size without over-stretching */
 .zoom-overlay img.deep-zoom {
-    max-width: none;
+    max-width: 100%; 
     max-height: none;
-    transform: scale(1.8); /* Adjust this for more/less zoom level */
     cursor: zoom-out;
 }
 
@@ -615,27 +610,26 @@ function changeSlide(n) {
     slides[currentSlide].classList.add("active-slide");
 }
 
-/* --- Zoom Logic --- */
+/* --- Natural Zoom Logic --- */
 function zoomImage(imgElement) {
     const overlay = document.getElementById("zoomOverlay");
     const zoomedImg = document.getElementById("zoomedImg");
     
     zoomedImg.src = imgElement.src;
-    zoomedImg.classList.remove("deep-zoom"); // Always reset zoom level when opening
-    overlay.style.display = "flex";
+    zoomedImg.classList.remove("deep-zoom"); 
+    overlay.style.display = "block"; // Changed from flex to block for better scrolling
 }
 
 function closeZoom() {
     document.getElementById("zoomOverlay").style.display = "none";
 }
 
-/* Deep Zoom Toggle on Click */
+/* Toggle Natural Width */
 document.getElementById("zoomedImg").addEventListener("click", function(e) {
-    e.stopPropagation(); // Prevents background click from closing the overlay
+    e.stopPropagation(); 
     this.classList.toggle("deep-zoom");
 });
 
-/* Background click logic */
 window.onclick = function(event) {
     const projectModal = document.getElementById("projectModal");
     const zoomOverlay = document.getElementById("zoomOverlay");
