@@ -383,268 +383,7 @@
                 <div class="col-md-12 gallery-content">
                     <div class="magnific-mix-gallery gallery-masonary">
                         <div id="gallery-masonary" class="gallery-items colums-3">
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-    <div class="gallery-style-one">
-        <img src="assets/img/projects/acssllcabudhabi.png" alt="Thumb">
-        <div class="info">
-            <div class="overlay">
-                <div class="content">
-                    <ul class="pf-tags">
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">Coding</a></li>
-                    </ul>
-                </div>
-                <div class="icon">
-                    <a href="javascript:void(0)" onclick="openProjectModal()"><i class="fas fa-long-arrow-right"></i></a>
-                </div>
-            </div>
-            <h4><a href="javascript:void(0)" onclick="openProjectModal()">Acssllc Abudhabi</a></h4>
-        </div>
-    </div>
-</div>
-
-<div id="projectModal" class="custom-modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
-        
-        <div class="modal-body">
-            <div class="project-slider">
-                <div class="slides" id="lightgallery">
-                    <img src="assets/img/projects/screencapture-acssllcabudhabi-2026-01-23-22_44_59.png" class="active-slide zoomable" onclick="zoomImage(this)">
-                    <img src="assets/img/projects/screencapture-acssllcabudhabi-about-us-2025-11-06-12_09_11.png" class="zoomable" onclick="zoomImage(this)"> 
-                </div>
-                
-                <button class="nav-arrow prev" onclick="changeSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="nav-arrow next" onclick="changeSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-            
-            </div>
-
-            <div class="project-description">
-                <h2>Acssllc Abudhabi</h2>
-                <p class="project-meta">Category: <span>Web Development & Security</span></p>
-                <hr class="dark-hr">
-                <div class="details">
-                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services.</p>
-                </div>
-                
-                <div class="tech-tags">
-                    <span>HTML5</span>
-                    <span>Bootstrap</span>
-                    <span>JavaScript</span>
-                </div>
-
-                <a href="https://acssllcabudhabi.com/" target="_blank" class="btn-visit">View Live Project</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="zoomOverlay" class="zoom-overlay" onclick="closeZoom()">
-    <img id="zoomedImg" src="" alt="Zoomed View">
-</div>
-
-<style>
-/* --- Modal Backdrop --- */
-.custom-modal {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-
-    /* Black but not overpowering */
-    background-color: rgba(0, 0, 0, 0.8);
-
-    /* Blur */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-
-.modal-content {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #151515;
-    width: 95%;
-    max-width: 1400px;
-    height: 85vh;
-    border-radius: 10px;
-    display: flex;
-    overflow: hidden;
-    border: 1px solid #333;
-    animation: zoomIn 0.3s ease-out;
-}
-
-.modal-body { display: flex; width: 100%; height: 100%; }
-
-.project-slider {
-    flex: 1.8;
-    background: #000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slides img {
-    max-width: 100%;
-    max-height: 80vh;
-    display: none;
-    object-fit: contain;
-    cursor: zoom-in;
-}
-
-.slides img.active-slide { display: block; }
-
-/* --- REFINED ZOOM OVERLAY --- */
-.zoom-overlay {
-    display: none;
-    position: fixed;
-    z-index: 100000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
-    overflow: auto; /* Allows scrolling naturally */
-    cursor: pointer;
-    padding: 40px;
-}
-
-.zoom-overlay img {
-    display: block;
-    margin: auto;
-    max-width: 90%; /* Initial "Fit to screen" look */
-    max-height: 90vh;
-    transition: max-width 0.3s ease, max-height 0.3s ease;
-    cursor: zoom-in;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-/* Deep Zoom: Shows image at its real size without over-stretching */
-.zoom-overlay img.deep-zoom {
-    max-width: 100%; 
-    max-height: none;
-    cursor: zoom-out;
-}
-
-/* --- UI Controls --- */
-.nav-arrow {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: #1a1a1a;
-    color: #fff;
-    border: none;
-    width: 50px; height: 80px;
-    cursor: pointer;
-    border-top: 3px solid #ff6600;
-    border-bottom: 3px solid #ff6600;
-    z-index: 5;
-}
-.prev { left: 0; border-radius: 0 10px 10px 0; }
-.next { right: 0; border-radius: 10px 0 0 10px; }
-
-.project-description {
-    flex: 1;
-    padding: 60px;
-    background: #151515;
-    color: #fff;
-    border-left: 1px solid #222;
-}
-
-.project-description h2 { font-size: 38px; margin-bottom: 10px; color: white; }
-.project-meta span { color: #ff6600; }
-.tech-tags span {
-    display: inline-block;
-    background: #252525;
-    padding: 8px 18px;
-    margin: 5px;
-    border-radius: 4px;
-    border: 1px solid #333;
-}
-
-.btn-visit {
-    display: inline-block;
-    background: #ff6600;
-    color: #fff;
-    padding: 15px 35px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.close-modal { position: absolute; right: 25px; top: 15px; font-size: 40px; color: #666; cursor: pointer; z-index: 100; }
-
-@keyframes zoomIn { from { opacity: 0; transform: translate(-50%, -45%) scale(0.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-
-@media (max-width: 1024px) {
-    .modal-body { flex-direction: column; }
-    .project-description { padding: 30px; }
-}
-</style>
-
-<script>
-let currentSlide = 0;
-
-function openProjectModal() {
-    document.getElementById("projectModal").style.display = "block";
-    document.body.style.overflow = "hidden";
-}
-
-function closeProjectModal() {
-    document.getElementById("projectModal").style.display = "none";
-    document.body.style.overflow = "auto";
-}
-
-function changeSlide(n) {
-    const slides = document.querySelectorAll(".slides img");
-    slides[currentSlide].classList.remove("active-slide");
-    currentSlide = (currentSlide + n + slides.length) % slides.length;
-    slides[currentSlide].classList.add("active-slide");
-}
-
-/* --- Natural Zoom Logic --- */
-function zoomImage(imgElement) {
-    const overlay = document.getElementById("zoomOverlay");
-    const zoomedImg = document.getElementById("zoomedImg");
-    
-    zoomedImg.src = imgElement.src;
-    zoomedImg.classList.remove("deep-zoom"); 
-    overlay.style.display = "block"; // Changed from flex to block for better scrolling
-}
-
-function closeZoom() {
-    document.getElementById("zoomOverlay").style.display = "none";
-}
-
-/* Toggle Natural Width */
-document.getElementById("zoomedImg").addEventListener("click", function(e) {
-    e.stopPropagation(); 
-    this.classList.toggle("deep-zoom");
-});
-
-window.onclick = function(event) {
-    const projectModal = document.getElementById("projectModal");
-    const zoomOverlay = document.getElementById("zoomOverlay");
-    
-    if (event.target == projectModal) {
-        closeProjectModal();
-    }
-    if (event.target == zoomOverlay) {
-        closeZoom();
-    }
-}
-</script>
-                            <!-- End Single Item -->
-                           
-                                                <div id="gallery-masonary" class="gallery-items colums-3">
+                            <div id="gallery-masonary" class="gallery-items colums-3">
     <div class="gallery-item">
         <div class="gallery-style-one">
             <img src="assets/img/projects/alshahbazhospital.png" alt="Alshahbaz Hospital">
@@ -685,10 +424,23 @@ window.onclick = function(event) {
         </div>
     </div>
 
+    <div class="gallery-item project-hidden">
+        <div class="gallery-style-one">
+            <img src="assets/img/projects/example.png" alt="Example">
+            <div class="info">
+                <div class="overlay">
+                    <div class="icon">
+                        <a href="javascript:void(0)" onclick="openProject('alshahbaz')"><i class="fas fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <h4><a href="#">Extra Project</a></h4>
+            </div>
+        </div>
     </div>
+</div>
 
-<div class="text-center mt-50">
-    <button id="loadMoreBtn" class="btn-visit" style="border:none; cursor:pointer;">Load More Projects</button>
+<div class="text-center mt-50 mb-50">
+    <button id="loadMoreBtn" class="btn-load-more">Load More Projects</button>
 </div>
 
 <div id="projectModal" class="custom-modal">
@@ -696,8 +448,7 @@ window.onclick = function(event) {
         <span class="close-modal" onclick="closeProjectModal()">&times;</span>
         <div class="modal-body">
             <div class="project-slider">
-                <div class="slides" id="modalSlides">
-                    </div>
+                <div class="slides" id="modalSlides"></div>
                 <button class="nav-arrow prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
                 <button class="nav-arrow next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -708,8 +459,7 @@ window.onclick = function(event) {
                 <div class="details">
                     <p id="modalDesc">Description goes here.</p>
                 </div>
-                <div class="tech-tags" id="modalTags">
-                    </div>
+                <div class="tech-tags" id="modalTags"></div>
                 <a href="#" id="modalLink" target="_blank" class="btn-visit">View Live Project</a>
             </div>
         </div>
@@ -719,8 +469,140 @@ window.onclick = function(event) {
 <div id="zoomOverlay" class="zoom-overlay" onclick="closeZoom()">
     <img id="zoomedImg" src="" alt="Zoomed View">
 </div>
-                            <script>
-                                // 1. Data Object for all projects
+
+<style>
+    /* Modal Backdrop */
+    .custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #151515;
+        width: 95%;
+        max-width: 1300px;
+        height: 85vh;
+        border-radius: 12px;
+        display: flex;
+        overflow: hidden;
+        border: 1px solid #333;
+        animation: modalFadeIn 0.4s ease;
+    }
+
+    .modal-body { display: flex; width: 100%; height: 100%; }
+
+    /* Slider Area */
+    .project-slider {
+        flex: 1.5;
+        background: #000;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #modalSlides img {
+        max-width: 100%;
+        max-height: 80vh;
+        display: none;
+        object-fit: contain;
+        cursor: zoom-in;
+    }
+
+    #modalSlides img.active-slide { display: block; animation: fadeIn 0.5s; }
+
+    /* Info Area */
+    .project-description {
+        flex: 1;
+        padding: 50px;
+        background: #151515;
+        color: #fff;
+        border-left: 1px solid #222;
+        overflow-y: auto;
+    }
+
+    .project-description h2 { font-size: 32px; margin-bottom: 10px; color: #fff; }
+    .project-meta span { color: #ff6600; font-weight: 600; }
+    .dark-hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
+
+    .tech-tags span {
+        display: inline-block;
+        background: #252525;
+        padding: 6px 14px;
+        margin: 5px 5px 5px 0;
+        border-radius: 4px;
+        font-size: 13px;
+        border: 1px solid #333;
+    }
+
+    .btn-visit {
+        display: inline-block;
+        background: #ff6600;
+        color: #fff !important;
+        padding: 12px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 25px;
+        transition: 0.3s;
+    }
+
+    /* Controls */
+    .nav-arrow {
+        position: absolute;
+        top: 50%; transform: translateY(-50%);
+        background: rgba(0,0,0,0.6);
+        color: white; border: none;
+        padding: 20px 15px; cursor: pointer; z-index: 10;
+    }
+    .prev { left: 0; border-radius: 0 5px 5px 0; }
+    .next { right: 0; border-radius: 5px 0 0 5px; }
+    .close-modal { position: absolute; right: 20px; top: 10px; font-size: 35px; color: #999; cursor: pointer; z-index: 100; }
+
+    /* Load More Button */
+    .btn-load-more {
+        background: transparent;
+        color: #fff;
+        border: 2px solid #ff6600;
+        padding: 12px 35px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 4px;
+    }
+    .btn-load-more:hover { background: #ff6600; }
+
+    /* Utility */
+    .project-hidden { display: none !important; }
+
+    .zoom-overlay {
+        display: none; position: fixed; z-index: 100000;
+        inset: 0; background: rgba(0,0,0,0.95);
+        padding: 40px; text-align: center;
+    }
+    .zoom-overlay img { max-width: 95%; max-height: 90vh; margin: auto; cursor: zoom-out; }
+
+    @keyframes modalFadeIn { from { opacity: 0; transform: translate(-50%, -48%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (max-width: 991px) {
+        .modal-body { flex-direction: column; }
+        .modal-content { height: 90vh; width: 90%; }
+        .project-slider { min-height: 300px; }
+    }
+</style>
+
+<script>
 const projectData = {
     'alshahbaz': {
         title: "Alshahbaz Hospital",
@@ -729,8 +611,8 @@ const projectData = {
         tags: ["HTML5", "Bootstrap", "JavaScript"],
         link: "https://alshahbazhospital.com/",
         images: [
-            "assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png",
-            "assets/img/projects/screencapture-alshahbazhospital-about-us-2025-11-06-11_50_30.png"
+            "assets/img/projects/alshahbazhospital.png",
+            "assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png"
         ]
     },
     'alsiraj': {
@@ -741,7 +623,6 @@ const projectData = {
         link: "https://alsirajholdings.com/",
         images: ["assets/img/projects/alsiraj.png"]
     }
-    // Add other projects (dreamhomesolutions, fulfillkaro, etc.) here...
 };
 
 let currentSlide = 0;
@@ -750,20 +631,17 @@ function openProject(projectId) {
     const data = projectData[projectId];
     if (!data) return;
 
-    // Set Text Content
     document.getElementById("modalTitle").innerText = data.title;
     document.getElementById("modalCategory").innerText = data.category;
     document.getElementById("modalDesc").innerText = data.desc;
     document.getElementById("modalLink").href = data.link;
 
-    // Set Tags
     const tagContainer = document.getElementById("modalTags");
     tagContainer.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
 
-    // Set Images
     const slider = document.getElementById("modalSlides");
     slider.innerHTML = data.images.map((img, index) => 
-        `<img src="${img}" class="${index === 0 ? 'active-slide' : ''} zoomable" onclick="zoomImage(this)">`
+        `<img src="${img}" class="${index === 0 ? 'active-slide' : ''}" onclick="zoomImage(this)">`
     ).join('');
 
     currentSlide = 0;
@@ -784,24 +662,43 @@ function changeSlide(n) {
     slides[currentSlide].classList.add("active-slide");
 }
 
-// Zoom Functions
 function zoomImage(imgElement) {
     const overlay = document.getElementById("zoomOverlay");
     const zoomedImg = document.getElementById("zoomedImg");
     zoomedImg.src = imgElement.src;
-    overlay.style.display = "block";
+    overlay.style.display = "flex";
 }
 
 function closeZoom() {
     document.getElementById("zoomOverlay").style.display = "none";
 }
 
-// Load More Logic (Dummy implementation)
+// Actual Load More Logic
 document.getElementById('loadMoreBtn').addEventListener('click', function() {
-    alert("This would trigger an AJAX call or reveal hidden project divs!");
-    // You can use jQuery .fadeIn() or remove a 'hidden' class from more gallery-items here.
+    const hiddenItems = document.querySelectorAll('.gallery-item.project-hidden');
+    
+    // Reveal next 3 items
+    for(let i = 0; i < 3; i++) {
+        if(hiddenItems[i]) {
+            hiddenItems[i].classList.remove('project-hidden');
+        }
+    }
+
+    // Hide button if no more items
+    if (document.querySelectorAll('.gallery-item.project-hidden').length === 0) {
+        this.style.display = 'none';
+    }
 });
-                            </script>
+
+// Close modal when clicking outside content
+window.onclick = function(event) {
+    const modal = document.getElementById("projectModal");
+    if (event.target == modal) closeProjectModal();
+}
+</script>
+                <!-- End Single item -->
+
+                            
                     </div>
 
                     <div class="row">
