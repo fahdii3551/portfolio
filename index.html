@@ -383,18 +383,14 @@
                 <div class="col-md-12 gallery-content">
                     <div class="magnific-mix-gallery gallery-masonary">
                         <div id="gallery-masonary" class="gallery-items colums-3">
+
                             <div id="gallery-masonary" class="gallery-items colums-3">
+    
     <div class="gallery-item">
         <div class="gallery-style-one">
             <img src="assets/img/projects/alshahbazhospital.png" alt="Alshahbaz Hospital">
             <div class="info">
                 <div class="overlay">
-                    <div class="content">
-                        <ul class="pf-tags">
-                            <li><a href="#">Web</a></li>
-                            <li><a href="#">Coding</a></li>
-                        </ul>
-                    </div>
                     <div class="icon">
                         <a href="javascript:void(0)" onclick="openProject('alshahbaz')"><i class="fas fa-long-arrow-right"></i></a>
                     </div>
@@ -404,17 +400,11 @@
         </div>
     </div>
 
-    <div class="gallery-item">
+    <div class="gallery-item project-hidden">
         <div class="gallery-style-one">
             <img src="assets/img/projects/alsiraj.png" alt="Al-siraj">
             <div class="info">
                 <div class="overlay">
-                    <div class="content">
-                        <ul class="pf-tags">
-                            <li><a href="#">Brochure</a></li>
-                            <li><a href="#">Design</a></li>
-                        </ul>
-                    </div>
                     <div class="icon">
                         <a href="javascript:void(0)" onclick="openProject('alsiraj')"><i class="fas fa-long-arrow-right"></i></a>
                     </div>
@@ -423,24 +413,17 @@
             </div>
         </div>
     </div>
-
-    <div class="gallery-item project-hidden">
-        <div class="gallery-style-one">
-            <img src="assets/img/projects/example.png" alt="Example">
-            <div class="info">
-                <div class="overlay">
-                    <div class="icon">
-                        <a href="javascript:void(0)" onclick="openProject('alshahbaz')"><i class="fas fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
-                <h4><a href="#">Extra Project</a></h4>
-            </div>
-        </div>
-    </div>
 </div>
 
-<div class="text-center mt-50 mb-50">
-    <button id="loadMoreBtn" class="btn-load-more">Load More Projects</button>
+<div class="row" id="loadMoreSection">
+    <div class="col-lg-12 text-center">
+        <div class="load-more-info text-center mt-60 mt-xs-30">
+            <p>
+                Are you interested to show more portfolios? 
+                <a href="javascript:void(0)" id="loadMoreLink" style="color: #ff6600; font-weight: bold; text-decoration: underline;">Load More</a>
+            </p>
+        </div>
+    </div>
 </div>
 
 <div id="projectModal" class="custom-modal">
@@ -453,12 +436,10 @@
                 <button class="nav-arrow next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="project-description">
-                <h2 id="modalTitle">Project Title</h2>
-                <p class="project-meta">Category: <span id="modalCategory">Category Name</span></p>
+                <h2 id="modalTitle"></h2>
+                <p class="project-meta">Category: <span id="modalCategory"></span></p>
                 <hr class="dark-hr">
-                <div class="details">
-                    <p id="modalDesc">Description goes here.</p>
-                </div>
+                <div class="details"><p id="modalDesc"></p></div>
                 <div class="tech-tags" id="modalTags"></div>
                 <a href="#" id="modalLink" target="_blank" class="btn-visit">View Live Project</a>
             </div>
@@ -471,155 +452,48 @@
 </div>
 
 <style>
-    /* Modal Backdrop */
-    .custom-modal {
-        display: none;
-        position: fixed;
-        z-index: 99999;
-        inset: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-
-    .modal-content {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #151515;
-        width: 95%;
-        max-width: 1300px;
-        height: 85vh;
-        border-radius: 12px;
-        display: flex;
-        overflow: hidden;
-        border: 1px solid #333;
-        animation: modalFadeIn 0.4s ease;
-    }
-
+    /* Modal Styles */
+    .custom-modal { display: none; position: fixed; z-index: 99999; inset: 0; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); }
+    .modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #151515; width: 95%; max-width: 1300px; height: 85vh; border-radius: 12px; display: flex; overflow: hidden; border: 1px solid #333; }
     .modal-body { display: flex; width: 100%; height: 100%; }
-
-    /* Slider Area */
-    .project-slider {
-        flex: 1.5;
-        background: #000;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #modalSlides img {
-        max-width: 100%;
-        max-height: 80vh;
-        display: none;
-        object-fit: contain;
-        cursor: zoom-in;
-    }
-
+    .project-slider { flex: 1.5; background: #000; position: relative; display: flex; align-items: center; justify-content: center; }
+    #modalSlides img { max-width: 100%; max-height: 80vh; display: none; object-fit: contain; cursor: zoom-in; }
     #modalSlides img.active-slide { display: block; animation: fadeIn 0.5s; }
-
-    /* Info Area */
-    .project-description {
-        flex: 1;
-        padding: 50px;
-        background: #151515;
-        color: #fff;
-        border-left: 1px solid #222;
-        overflow-y: auto;
-    }
-
-    .project-description h2 { font-size: 32px; margin-bottom: 10px; color: #fff; }
+    .project-description { flex: 1; padding: 50px; background: #151515; color: #fff; border-left: 1px solid #222; overflow-y: auto; }
     .project-meta span { color: #ff6600; font-weight: 600; }
     .dark-hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
-
-    .tech-tags span {
-        display: inline-block;
-        background: #252525;
-        padding: 6px 14px;
-        margin: 5px 5px 5px 0;
-        border-radius: 4px;
-        font-size: 13px;
-        border: 1px solid #333;
-    }
-
-    .btn-visit {
-        display: inline-block;
-        background: #ff6600;
-        color: #fff !important;
-        padding: 12px 30px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        margin-top: 25px;
-        transition: 0.3s;
-    }
-
-    /* Controls */
-    .nav-arrow {
-        position: absolute;
-        top: 50%; transform: translateY(-50%);
-        background: rgba(0,0,0,0.6);
-        color: white; border: none;
-        padding: 20px 15px; cursor: pointer; z-index: 10;
-    }
-    .prev { left: 0; border-radius: 0 5px 5px 0; }
-    .next { right: 0; border-radius: 5px 0 0 5px; }
+    .tech-tags span { display: inline-block; background: #252525; padding: 6px 14px; margin: 5px; border-radius: 4px; font-size: 13px; border: 1px solid #333; }
+    .btn-visit { display: inline-block; background: #ff6600; color: #fff !important; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 25px; }
+    .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; padding: 20px 15px; cursor: pointer; }
+    .prev { left: 0; } .next { right: 0; }
     .close-modal { position: absolute; right: 20px; top: 10px; font-size: 35px; color: #999; cursor: pointer; z-index: 100; }
-
-    /* Load More Button */
-    .btn-load-more {
-        background: transparent;
-        color: #fff;
-        border: 2px solid #ff6600;
-        padding: 12px 35px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-        border-radius: 4px;
-    }
-    .btn-load-more:hover { background: #ff6600; }
-
-    /* Utility */
+    
+    /* Load More Functionality */
     .project-hidden { display: none !important; }
-
-    .zoom-overlay {
-        display: none; position: fixed; z-index: 100000;
-        inset: 0; background: rgba(0,0,0,0.95);
-        padding: 40px; text-align: center;
-    }
-    .zoom-overlay img { max-width: 95%; max-height: 90vh; margin: auto; cursor: zoom-out; }
-
-    @keyframes modalFadeIn { from { opacity: 0; transform: translate(-50%, -48%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+    
+    .zoom-overlay { display: none; position: fixed; z-index: 100000; inset: 0; background: rgba(0,0,0,0.95); padding: 40px; justify-content: center; align-items: center; }
+    .zoom-overlay img { max-width: 95%; max-height: 90vh; cursor: zoom-out; }
+    
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    @media (max-width: 991px) {
-        .modal-body { flex-direction: column; }
-        .modal-content { height: 90vh; width: 90%; }
-        .project-slider { min-height: 300px; }
-    }
+    @media (max-width: 991px) { .modal-body { flex-direction: column; } .project-slider { min-height: 300px; } }
 </style>
 
 <script>
+// --- DATA ---
 const projectData = {
     'alshahbaz': {
         title: "Alshahbaz Hospital",
-        category: "Web Development & Healthcare",
-        desc: "A comprehensive healthcare platform featuring appointment bookings and department overviews.",
-        tags: ["HTML5", "Bootstrap", "JavaScript"],
+        category: "Healthcare",
+        desc: "A comprehensive healthcare platform.",
+        tags: ["HTML5", "Bootstrap"],
         link: "https://alshahbazhospital.com/",
-        images: [
-            "assets/img/projects/alshahbazhospital.png",
-            "assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png"
-        ]
+        images: ["assets/img/projects/alshahbazhospital.png"]
     },
     'alsiraj': {
         title: "Al-siraj Holdings",
-        category: "Corporate Portfolio",
-        desc: "High-end corporate identity and web presence for Al-siraj Holdings.",
-        tags: ["Design", "PHP", "UI/UX"],
+        category: "Corporate",
+        desc: "Corporate identity for holdings company.",
+        tags: ["PHP", "UI/UX"],
         link: "https://alsirajholdings.com/",
         images: ["assets/img/projects/alsiraj.png"]
     }
@@ -627,23 +501,16 @@ const projectData = {
 
 let currentSlide = 0;
 
+// --- MODAL LOGIC ---
 function openProject(projectId) {
     const data = projectData[projectId];
     if (!data) return;
-
     document.getElementById("modalTitle").innerText = data.title;
     document.getElementById("modalCategory").innerText = data.category;
     document.getElementById("modalDesc").innerText = data.desc;
     document.getElementById("modalLink").href = data.link;
-
-    const tagContainer = document.getElementById("modalTags");
-    tagContainer.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
-
-    const slider = document.getElementById("modalSlides");
-    slider.innerHTML = data.images.map((img, index) => 
-        `<img src="${img}" class="${index === 0 ? 'active-slide' : ''}" onclick="zoomImage(this)">`
-    ).join('');
-
+    document.getElementById("modalTags").innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
+    document.getElementById("modalSlides").innerHTML = data.images.map((img, i) => `<img src="${img}" class="${i===0?'active-slide':''}" onclick="zoomImage(this)">`).join('');
     currentSlide = 0;
     document.getElementById("projectModal").style.display = "block";
     document.body.style.overflow = "hidden";
@@ -663,37 +530,36 @@ function changeSlide(n) {
 }
 
 function zoomImage(imgElement) {
-    const overlay = document.getElementById("zoomOverlay");
-    const zoomedImg = document.getElementById("zoomedImg");
-    zoomedImg.src = imgElement.src;
-    overlay.style.display = "flex";
+    document.getElementById("zoomedImg").src = imgElement.src;
+    document.getElementById("zoomOverlay").style.display = "flex";
 }
 
-function closeZoom() {
-    document.getElementById("zoomOverlay").style.display = "none";
-}
+function closeZoom() { document.getElementById("zoomOverlay").style.display = "none"; }
 
-// Actual Load More Logic
-document.getElementById('loadMoreBtn').addEventListener('click', function() {
-    const hiddenItems = document.querySelectorAll('.gallery-item.project-hidden');
+// --- LOAD MORE LINK LOGIC ---
+document.getElementById('loadMoreLink').addEventListener('click', function(e) {
+    e.preventDefault(); // Stop the '#' link from jumping the page
     
-    // Reveal next 3 items
-    for(let i = 0; i < 3; i++) {
+    const hiddenItems = document.querySelectorAll('.gallery-item.project-hidden');
+    const itemsToReveal = 6; // How many items to show per click
+    
+    for(let i = 0; i < itemsToReveal; i++) {
         if(hiddenItems[i]) {
             hiddenItems[i].classList.remove('project-hidden');
+            // Add a little fade-in effect via JS if you like
+            hiddenItems[i].style.animation = "fadeIn 0.8s ease forwards";
         }
     }
 
-    // Hide button if no more items
+    // Hide the whole "Interested to show more" text if no items are left
     if (document.querySelectorAll('.gallery-item.project-hidden').length === 0) {
-        this.style.display = 'none';
+        document.getElementById('loadMoreSection').style.display = 'none';
     }
 });
 
-// Close modal when clicking outside content
+// Close modal on outside click
 window.onclick = function(event) {
-    const modal = document.getElementById("projectModal");
-    if (event.target == modal) closeProjectModal();
+    if (event.target == document.getElementById("projectModal")) closeProjectModal();
 }
 </script>
                 <!-- End Single item -->
@@ -701,15 +567,7 @@ window.onclick = function(event) {
                             
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <div class="load-more-info text-center mt-60 mt-xs-30">
-                                <p>
-                                    Are you interested to show more portfolios? <a href="#">Load More</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                  
 
                 </div>
             </div>
