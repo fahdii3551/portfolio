@@ -644,66 +644,73 @@ window.onclick = function(event) {
 </script>
                             <!-- End Single Item -->
                            
-                                                        <!-- Single Item -->
-
-                            <div class="gallery-item">
-    <div class="gallery-style-one">
-        <img src="assets/img/projects/alshahbazhospital.png" alt="Thumb">
-        <div class="info">
-            <div class="overlay">
-                <div class="content">
-                    <ul class="pf-tags">
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">Coding</a></li>
-                    </ul>
+                                                <div id="gallery-masonary" class="gallery-items colums-3">
+    <div class="gallery-item">
+        <div class="gallery-style-one">
+            <img src="assets/img/projects/alshahbazhospital.png" alt="Alshahbaz Hospital">
+            <div class="info">
+                <div class="overlay">
+                    <div class="content">
+                        <ul class="pf-tags">
+                            <li><a href="#">Web</a></li>
+                            <li><a href="#">Coding</a></li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <a href="javascript:void(0)" onclick="openProject('alshahbaz')"><i class="fas fa-long-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div class="icon">
-                    <a href="javascript:void(0)" onclick="openProjectModal()"><i class="fas fa-long-arrow-right"></i></a>
-                </div>
+                <h4><a href="javascript:void(0)" onclick="openProject('alshahbaz')">Alshahbaz Hospital</a></h4>
             </div>
-            <h4><a href="javascript:void(0)" onclick="openProjectModal()">Alshahbaz Hospital</a></h4>
         </div>
     </div>
+
+    <div class="gallery-item">
+        <div class="gallery-style-one">
+            <img src="assets/img/projects/alsiraj.png" alt="Al-siraj">
+            <div class="info">
+                <div class="overlay">
+                    <div class="content">
+                        <ul class="pf-tags">
+                            <li><a href="#">Brochure</a></li>
+                            <li><a href="#">Design</a></li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <a href="javascript:void(0)" onclick="openProject('alsiraj')"><i class="fas fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <h4><a href="javascript:void(0)" onclick="openProject('alsiraj')">Al-siraj Holdings</a></h4>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+<div class="text-center mt-50">
+    <button id="loadMoreBtn" class="btn-visit" style="border:none; cursor:pointer;">Load More Projects</button>
 </div>
 
 <div id="projectModal" class="custom-modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeProjectModal()">&times;</span>
-        
         <div class="modal-body">
             <div class="project-slider">
-                <div class="slides" id="lightgallery">
-                    <img src="assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png" class="active-slide zoomable" onclick="zoomImage(this)">
-                    <img src="assets/img/projects/screencapture-alshahbazhospital-about-us-2025-11-06-11_50_30.png" class="zoomable" onclick="zoomImage(this)"> 
-                    <img src="assets/img/projects/screencapture-alshahbazhospital-cardiology-2025-11-06-11_50_57.png" class="zoomable" onclick="zoomImage(this)"> 
-                    <img src="assets/img/projects/screencapture-alshahbazhospital-contact-us-2025-11-06-11_52_28.png" class="zoomable" onclick="zoomImage(this)"> 
-                </div>
-                
-                <button class="nav-arrow prev" onclick="changeSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="nav-arrow next" onclick="changeSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-            
+                <div class="slides" id="modalSlides">
+                    </div>
+                <button class="nav-arrow prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-arrow next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
-
             <div class="project-description">
-                <h2>Alshahbaz Hospital</h2>
-                <p class="project-meta">Category: <span>Web Development & Security</span></p>
+                <h2 id="modalTitle">Project Title</h2>
+                <p class="project-meta">Category: <span id="modalCategory">Category Name</span></p>
                 <hr class="dark-hr">
                 <div class="details">
-                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services.</p>
+                    <p id="modalDesc">Description goes here.</p>
                 </div>
-                
-                <div class="tech-tags">
-                    <span>HTML5</span>
-                    <span>Bootstrap</span>
-                    <span>JavaScript</span>
-                </div>
-
-                <a href="https://alshahbazhospital.com/" target="_blank" class="btn-visit">View Live Project</a>
+                <div class="tech-tags" id="modalTags">
+                    </div>
+                <a href="#" id="modalLink" target="_blank" class="btn-visit">View Live Project</a>
             </div>
         </div>
     </div>
@@ -712,336 +719,89 @@ window.onclick = function(event) {
 <div id="zoomOverlay" class="zoom-overlay" onclick="closeZoom()">
     <img id="zoomedImg" src="" alt="Zoomed View">
 </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/alsiraj.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Brochure</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Design</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://alsirajholdings.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Al-siraj Holdings</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                             <div id="gallery-masonary" class="gallery-items colums-3">
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/dreamhomesolutions-ae.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Web</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Coding</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://dreamhomesolutions.ae/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Dreamhomesolutions.ae</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/fulfillkaro-pk.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Software</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Mobile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://www.fulfillkaro.pk/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Fulfillkaro.pk</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/As SOft Landing Page.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Brochure</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Design</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://devs.kitchnstore.com/wordpress/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">As Soft Technologies</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                             <div id="gallery-masonary" class="gallery-items colums-3">
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/houseofhappinessf.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Web</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Coding</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://houseofhappinessf.org/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Houseofhappinessf.org</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/get-sportendorsestars.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Software</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Mobile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://get.sportendorsestars.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Get-Sportendorsestars</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/glscanmiddleeast.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Brochure</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Design</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://glscanmiddleeast.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Glscan Middle East</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                             <div id="gallery-masonary" class="gallery-items colums-3">
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/kiddlersonline.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Web</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Coding</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://kiddlersonline.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Kiddlers Online</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/pier1treehoboken.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Software</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Mobile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://pier1treehoboken.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Pier1treehoboken</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/marcopolo.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Brochure</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Design</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="marcopolointercontinental.com"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Marcopolo Intercontinental</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/remote-opus.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Brand</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Mockup</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://remote-opus.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Remote Opus</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                             <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/syncfulfilment.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Design</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Art</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://syncfulfilment.nl/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Sync Fulfilment</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                             <!-- Single Item -->
-                            <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/sportendorse.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Music</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Video</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://www.sportendorse.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Sportendorse</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                        </div>
+                            <script>
+                                // 1. Data Object for all projects
+const projectData = {
+    'alshahbaz': {
+        title: "Alshahbaz Hospital",
+        category: "Web Development & Healthcare",
+        desc: "A comprehensive healthcare platform featuring appointment bookings and department overviews.",
+        tags: ["HTML5", "Bootstrap", "JavaScript"],
+        link: "https://alshahbazhospital.com/",
+        images: [
+            "assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png",
+            "assets/img/projects/screencapture-alshahbazhospital-about-us-2025-11-06-11_50_30.png"
+        ]
+    },
+    'alsiraj': {
+        title: "Al-siraj Holdings",
+        category: "Corporate Portfolio",
+        desc: "High-end corporate identity and web presence for Al-siraj Holdings.",
+        tags: ["Design", "PHP", "UI/UX"],
+        link: "https://alsirajholdings.com/",
+        images: ["assets/img/projects/alsiraj.png"]
+    }
+    // Add other projects (dreamhomesolutions, fulfillkaro, etc.) here...
+};
+
+let currentSlide = 0;
+
+function openProject(projectId) {
+    const data = projectData[projectId];
+    if (!data) return;
+
+    // Set Text Content
+    document.getElementById("modalTitle").innerText = data.title;
+    document.getElementById("modalCategory").innerText = data.category;
+    document.getElementById("modalDesc").innerText = data.desc;
+    document.getElementById("modalLink").href = data.link;
+
+    // Set Tags
+    const tagContainer = document.getElementById("modalTags");
+    tagContainer.innerHTML = data.tags.map(t => `<span>${t}</span>`).join('');
+
+    // Set Images
+    const slider = document.getElementById("modalSlides");
+    slider.innerHTML = data.images.map((img, index) => 
+        `<img src="${img}" class="${index === 0 ? 'active-slide' : ''} zoomable" onclick="zoomImage(this)">`
+    ).join('');
+
+    currentSlide = 0;
+    document.getElementById("projectModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeProjectModal() {
+    document.getElementById("projectModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+function changeSlide(n) {
+    const slides = document.querySelectorAll("#modalSlides img");
+    if (slides.length <= 1) return;
+    slides[currentSlide].classList.remove("active-slide");
+    currentSlide = (currentSlide + n + slides.length) % slides.length;
+    slides[currentSlide].classList.add("active-slide");
+}
+
+// Zoom Functions
+function zoomImage(imgElement) {
+    const overlay = document.getElementById("zoomOverlay");
+    const zoomedImg = document.getElementById("zoomedImg");
+    zoomedImg.src = imgElement.src;
+    overlay.style.display = "block";
+}
+
+function closeZoom() {
+    document.getElementById("zoomOverlay").style.display = "none";
+}
+
+// Load More Logic (Dummy implementation)
+document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    alert("This would trigger an AJAX call or reveal hidden project divs!");
+    // You can use jQuery .fadeIn() or remove a 'hidden' class from more gallery-items here.
+});
+                            </script>
                     </div>
 
                     <div class="row">
