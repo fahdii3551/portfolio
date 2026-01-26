@@ -643,30 +643,75 @@ window.onclick = function(event) {
 }
 </script>
                             <!-- End Single Item -->
-                            <!-- Single Item -->
+                           
+                                                        <!-- Single Item -->
+
                             <div class="gallery-item">
-                                <div class="gallery-style-one">
-                                    <img src="assets/img/projects/alshahbazhospital.png" alt="Thumb">
-                                    <div class="info">
-                                        <div class="overlay">
-                                            <div class="content">
-                                                <ul class="pf-tags">
-                                                    <li>
-                                                        <a href="#">Software</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Mobile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="icon">
-                                                <a href="https://alshahbazhospital.com/"><i class="fas fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <h4><a href="project-details.html">Alshahbaz Hospital</a></h4>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="gallery-style-one">
+        <img src="assets/img/projects/alshahbazhospital.png" alt="Thumb">
+        <div class="info">
+            <div class="overlay">
+                <div class="content">
+                    <ul class="pf-tags">
+                        <li><a href="#">Web</a></li>
+                        <li><a href="#">Coding</a></li>
+                    </ul>
+                </div>
+                <div class="icon">
+                    <a href="javascript:void(0)" onclick="openProjectModal()"><i class="fas fa-long-arrow-right"></i></a>
+                </div>
+            </div>
+            <h4><a href="javascript:void(0)" onclick="openProjectModal()">Alshahbaz Hospital</a></h4>
+        </div>
+    </div>
+</div>
+
+<div id="projectModal" class="custom-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        
+        <div class="modal-body">
+            <div class="project-slider">
+                <div class="slides" id="lightgallery">
+                    <img src="assets/img/projects/screencapture-alshahbazhospital-2025-11-06-11_50_09.png" class="active-slide zoomable" onclick="zoomImage(this)">
+                    <img src="assets/img/projects/screencapture-alshahbazhospital-about-us-2025-11-06-11_50_30.png" class="zoomable" onclick="zoomImage(this)"> 
+                    <img src="assets/img/projects/screencapture-alshahbazhospital-cardiology-2025-11-06-11_50_57.png" class="zoomable" onclick="zoomImage(this)"> 
+                    <img src="assets/img/projects/screencapture-alshahbazhospital-contact-us-2025-11-06-11_52_28.png" class="zoomable" onclick="zoomImage(this)"> 
+                </div>
+                
+                <button class="nav-arrow prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-arrow next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+            
+            </div>
+
+            <div class="project-description">
+                <h2>Alshahbaz Hospital</h2>
+                <p class="project-meta">Category: <span>Web Development & Security</span></p>
+                <hr class="dark-hr">
+                <div class="details">
+                    <p>This project is a high-end corporate platform for <strong>Alpha Capital Security Systems</strong>. It features a modern, responsive design aimed at showcasing IT and security services.</p>
+                </div>
+                
+                <div class="tech-tags">
+                    <span>HTML5</span>
+                    <span>Bootstrap</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="https://alshahbazhospital.com/" target="_blank" class="btn-visit">View Live Project</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="zoomOverlay" class="zoom-overlay" onclick="closeZoom()">
+    <img id="zoomedImg" src="" alt="Zoomed View">
+</div>
                             <!-- End Single Item -->
                             <!-- Single Item -->
                             <div class="gallery-item">
