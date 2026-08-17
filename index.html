@@ -1066,7 +1066,76 @@
         transform: translateY(-6px); 
         box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     }
-    
+    .attr-right {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 12px;
+    width: auto !important;
+}
+
+.attr-right .dark-mode-toggle {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.attr-right .attr-nav.attr-box {
+    position: static !important;
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.attr-right .attr-nav.attr-box > ul {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    float: none !important;
+    position: static !important;
+    flex-wrap: nowrap !important;
+}
+
+.attr-right .attr-nav.attr-box > ul > li {
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+    position: static !important;
+    margin: 0 !important;
+}
+
+.attr-right .attr-nav.attr-box > ul > li.button > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px;
+    white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+    .attr-right {
+        gap: 8px;
+    }
+    .attr-right .dark-mode-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+}
     /* ==== THE SCROLLING IMAGE MAGIC ==== */
     .project-card .thumb { 
         height: 320px; /* Fixed height for the thumbnail window */
