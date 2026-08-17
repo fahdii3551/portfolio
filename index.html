@@ -120,7 +120,10 @@
 
                 <div class="nav-right">
                     <div class="attr-right">
-                       
+                        <!-- Dark Mode Toggle -->
+                        <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
                         <!-- Start Atribute Navigation -->
                         <div class="attr-nav attr-box">
                             <ul>
@@ -1597,13 +1600,16 @@
         <!--
             HOW TO ADD YOUR OWN PROJECT LOGOS:
             1. Drop your logo images into assets/img/partner/ (transparent PNG/SVG works best)
-            2. Copy one <div class="logo-badge">...</div> block below and update the src + alt
-            3. Add the SAME new block to BOTH .logo-track-inner groups (there are two identical
-               copies back-to-back further down) so the loop stays seamless. If you only add it
-               to one, the loop will visibly "jump" once per cycle.
-            The track auto-scrolls right-to-left forever and pauses whenever the mouse hovers it.
+            2. Copy one <div class="logo-badge">...</div> block below and update the src + alt.
+               Put it in whichever row you like - Row A (top) scrolls right-to-left,
+               Row B (bottom) scrolls left-to-right.
+            3. Add the SAME new block to BOTH .logo-track-inner groups inside that row
+               (there are two identical copies back-to-back) so the loop stays seamless.
+               If you only add it to one copy, the loop will visibly "jump" once per cycle.
+            Both rows auto-scroll forever and pause independently whenever the mouse
+            hovers over that row.
         -->
-        <div class="logo-carousel">
+        <div class="logo-carousel logo-row logo-row-a">
             <div class="logo-track">
                 <!-- Group A -->
                 <div class="logo-track-inner">
@@ -1611,9 +1617,6 @@
                     <div class="logo-badge"><img src="assets/img/partner/2.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/3.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/4.png" alt="Partner logo"></div>
-                    <div class="logo-badge"><img src="assets/img/partner/5.png" alt="Partner logo"></div>
-                    <div class="logo-badge"><img src="assets/img/partner/6.png" alt="Partner logo"></div>
-                    <div class="logo-badge"><img src="assets/img/partner/7.png" alt="Partner logo"></div>
                 </div>
                 <!-- Group B (exact duplicate of Group A - required for the seamless infinite loop, do not remove) -->
                 <div class="logo-track-inner" aria-hidden="true">
@@ -1621,9 +1624,25 @@
                     <div class="logo-badge"><img src="assets/img/partner/2.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/3.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/4.png" alt="Partner logo"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-carousel logo-row logo-row-b">
+            <div class="logo-track">
+                <!-- Group A -->
+                <div class="logo-track-inner reverse">
                     <div class="logo-badge"><img src="assets/img/partner/5.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/6.png" alt="Partner logo"></div>
                     <div class="logo-badge"><img src="assets/img/partner/7.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/1.png" alt="Partner logo"></div>
+                </div>
+                <!-- Group B (exact duplicate of Group A - required for the seamless infinite loop, do not remove) -->
+                <div class="logo-track-inner reverse" aria-hidden="true">
+                    <div class="logo-badge"><img src="assets/img/partner/5.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/6.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/7.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/1.png" alt="Partner logo"></div>
                 </div>
             </div>
         </div>
@@ -1631,12 +1650,15 @@
     <!-- End Partner -->
 
     <style>
-        /* ===== Infinite Logo Carousel ===== */
+        /* ===== Infinite Logo Carousel - 2 Rows, Opposite Directions ===== */
         .logo-carousel {
             width: 100%;
             overflow: hidden;
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+        .logo-row + .logo-row {
+            margin-top: 30px;
         }
         .logo-track {
             display: flex;
@@ -1647,7 +1669,13 @@
             align-items: center;
             animation: logo-scroll 28s linear infinite;
         }
-        .logo-carousel:hover .logo-track-inner {
+        /* Row B reuses the same keyframes but plays them backwards,
+           which makes it drift left -> right instead of right -> left */
+        .logo-track-inner.reverse {
+            animation-duration: 24s;
+            animation-direction: reverse;
+        }
+        .logo-row:hover .logo-track-inner {
             animation-play-state: paused;
         }
         @keyframes logo-scroll {
@@ -1666,9 +1694,19 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
+            /* subtle entrance/idle animation for a bit of life */
+            animation: logo-pop 0.6s ease backwards;
+        }
+        .logo-track-inner .logo-badge:nth-child(1) { animation-delay: 0s; }
+        .logo-track-inner .logo-badge:nth-child(2) { animation-delay: 0.08s; }
+        .logo-track-inner .logo-badge:nth-child(3) { animation-delay: 0.16s; }
+        .logo-track-inner .logo-badge:nth-child(4) { animation-delay: 0.24s; }
+        @keyframes logo-pop {
+            from { opacity: 0; transform: scale(0.85); }
+            to   { opacity: 1; transform: scale(1); }
         }
         .logo-badge:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) scale(1.05);
             box-shadow: 0 16px 32px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.03);
         }
         .logo-badge img {
@@ -1678,6 +1716,10 @@
         }
         @media (max-width: 767px) {
             .logo-badge { width: 120px; height: 120px; margin: 0 12px; }
+            .logo-row + .logo-row { margin-top: 20px; }
+        }
+        @media (max-width: 480px) {
+            .logo-badge { width: 92px; height: 92px; margin: 0 8px; }
         }
         body.bg-dark .logo-badge {
             background: radial-gradient(circle at 30% 30%, #2a2a2a, #1c1c1c);
@@ -1948,10 +1990,15 @@
     </button>
 
     <style>
+        /* ===== Smooth Scrolling ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* ===== Floating Widgets ===== */
         .whatsapp-widget {
             position: fixed;
-            right: 26px;
+            left: 26px;
             bottom: 26px;
             width: 60px;
             height: 60px;
@@ -1980,7 +2027,7 @@
         .back-to-top-widget {
             position: fixed;
             right: 26px;
-            bottom: 96px;
+            bottom: 26px;
             width: 46px;
             height: 46px;
             background: var(--primary-color, #1a1a1a);
@@ -2009,8 +2056,8 @@
         }
 
         @media (max-width: 480px) {
-            .whatsapp-widget { right: 16px; bottom: 16px; width: 52px; height: 52px; font-size: 26px; }
-            .back-to-top-widget { right: 16px; bottom: 78px; width: 40px; height: 40px; font-size: 15px; }
+            .whatsapp-widget { left: 16px; bottom: 16px; width: 52px; height: 52px; font-size: 26px; }
+            .back-to-top-widget { right: 16px; bottom: 16px; width: 40px; height: 40px; font-size: 15px; }
         }
 
         /* ===== Dark Mode Toggle Button =====
