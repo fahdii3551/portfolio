@@ -1066,6 +1066,32 @@
         transform: translateY(-6px); 
         box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     }
+    #darkModeToggle,
+#darkModeToggle:hover,
+#darkModeToggle:focus,
+#darkModeToggle:active {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+#darkModeToggle::before,
+#darkModeToggle::after,
+#darkModeToggle:hover::before,
+#darkModeToggle:hover::after,
+#darkModeToggle:focus::before,
+#darkModeToggle:focus::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    transform: none !important;
+    clip-path: none !important;
+}
+
+#darkModeToggle:hover {
+    background: rgba(0,0,0,0.06) !important;
+    color: inherit !important;
+}
     .attr-right {
     display: flex !important;
     flex-wrap: nowrap !important;
