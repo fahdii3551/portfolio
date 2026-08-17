@@ -120,6 +120,10 @@
 
                 <div class="nav-right">
                     <div class="attr-right">
+                        <!-- Dark Mode Toggle -->
+                        <button id="darkModeToggle" class="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
                         <!-- Start Atribute Navigation -->
                         <div class="attr-nav attr-box">
                             <ul>
@@ -1579,7 +1583,7 @@
     </div>
     <!-- End Timeline -->
 
-    <!-- Start Partner 
+    <!-- Start Partner (Infinite Logo Carousel)
     ============================================= -->
     <div class="partner-style-one-area text-center default-padding bottom-less overflow-hidden">
         <div class="container">
@@ -1592,53 +1596,97 @@
                 </div>
             </div>
         </div>
-        <div class="container-full">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="partner-style-one-items">
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInLeft">
-                            <img src="assets/img/partner/1.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInLeft">
-                            <img src="assets/img/partner/2.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInLeft">
-                            <img src="assets/img/partner/3.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInLeft">
-                            <img src="assets/img/partner/4.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                    </div>
-                    <div class="partner-style-one-items">
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInRight">
-                            <img src="assets/img/partner/5.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInRight">
-                            <img src="assets/img/partner/6.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="partner-style-one-item wow fadeInRight">
-                            <img src="assets/img/partner/7.png" alt="Image Not Found">
-                        </div>
-                        <!-- End Single Item -->
-                    </div>
+
+        <!--
+            HOW TO ADD YOUR OWN PROJECT LOGOS:
+            1. Drop your logo images into assets/img/partner/ (transparent PNG/SVG works best)
+            2. Copy one <div class="logo-badge">...</div> block below and update the src + alt
+            3. Add the SAME new block to BOTH .logo-track-inner groups (there are two identical
+               copies back-to-back further down) so the loop stays seamless. If you only add it
+               to one, the loop will visibly "jump" once per cycle.
+            The track auto-scrolls right-to-left forever and pauses whenever the mouse hovers it.
+        -->
+        <div class="logo-carousel">
+            <div class="logo-track">
+                <!-- Group A -->
+                <div class="logo-track-inner">
+                    <div class="logo-badge"><img src="assets/img/partner/1.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/2.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/3.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/4.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/5.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/6.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/7.png" alt="Partner logo"></div>
+                </div>
+                <!-- Group B (exact duplicate of Group A - required for the seamless infinite loop, do not remove) -->
+                <div class="logo-track-inner" aria-hidden="true">
+                    <div class="logo-badge"><img src="assets/img/partner/1.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/2.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/3.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/4.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/5.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/6.png" alt="Partner logo"></div>
+                    <div class="logo-badge"><img src="assets/img/partner/7.png" alt="Partner logo"></div>
                 </div>
             </div>
         </div>
     </div>
     <!-- End Partner -->
+
+    <style>
+        /* ===== Infinite Logo Carousel ===== */
+        .logo-carousel {
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+        .logo-track {
+            display: flex;
+            width: max-content;
+        }
+        .logo-track-inner {
+            display: flex;
+            align-items: center;
+            animation: logo-scroll 28s linear infinite;
+        }
+        .logo-carousel:hover .logo-track-inner {
+            animation-play-state: paused;
+        }
+        @keyframes logo-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-100%); }
+        }
+        .logo-badge {
+            flex: 0 0 auto;
+            width: 170px;
+            height: 170px;
+            margin: 0 18px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #f2f3f5);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .logo-badge:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.03);
+        }
+        .logo-badge img {
+            max-width: 62%;
+            max-height: 62%;
+            object-fit: contain;
+        }
+        @media (max-width: 767px) {
+            .logo-badge { width: 120px; height: 120px; margin: 0 12px; }
+        }
+        body.dark-mode .logo-badge {
+            background: radial-gradient(circle at 30% 30%, #2a2a2a, #1c1c1c);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.06);
+        }
+    </style>
 
     <!-- Start Faq 
     ============================================= -->
@@ -1891,6 +1939,203 @@
     <script src="assets/js/jquery.circleType.js"></script>
     <script src="assets/js/typed.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- Start Floating Widgets: WhatsApp + Back-to-Top + Dark Mode
+    ============================================= -->
+    <a href="https://wa.me/923334456876" target="_blank" rel="noopener" class="whatsapp-widget" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button id="backToTopBtn" class="back-to-top-widget" type="button" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <style>
+        /* ===== Floating Widgets ===== */
+        .whatsapp-widget {
+            position: fixed;
+            right: 26px;
+            bottom: 26px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+            z-index: 9998;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: wa-pulse 2.4s ease-in-out infinite;
+        }
+        .whatsapp-widget:hover {
+            transform: scale(1.08);
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
+        }
+        @keyframes wa-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+            50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+        }
+
+        .back-to-top-widget {
+            position: fixed;
+            right: 26px;
+            bottom: 96px;
+            width: 46px;
+            height: 46px;
+            background: var(--primary-color, #1a1a1a);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            cursor: pointer;
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+        .back-to-top-widget.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top-widget:hover {
+            background: var(--secondary-color, #4a90e2);
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-widget { right: 16px; bottom: 16px; width: 52px; height: 52px; font-size: 26px; }
+            .back-to-top-widget { right: 16px; bottom: 78px; width: 40px; height: 40px; font-size: 15px; }
+        }
+
+        /* ===== Dark Mode Toggle Button ===== */
+        .dark-mode-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: transparent;
+            color: var(--text-dark, #222);
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 14px;
+            transition: all 0.25s ease;
+            vertical-align: middle;
+        }
+        .dark-mode-toggle:hover {
+            background: rgba(0,0,0,0.06);
+        }
+        body.dark-mode .dark-mode-toggle {
+            color: #fff;
+            border-color: rgba(255,255,255,0.2);
+        }
+        body.dark-mode .dark-mode-toggle:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ===== Dark Mode Theme (best-effort site-wide override) ===== */
+        body.dark-mode {
+            background-color: #121212 !important;
+            color: #e6e6e6 !important;
+        }
+        body.dark-mode header,
+        body.dark-mode .navbar,
+        body.dark-mode .bg-gray,
+        body.dark-mode .bg-light,
+        body.dark-mode .banner-style-one-area,
+        body.dark-mode .about-style-one-area,
+        body.dark-mode .services-style-one-area,
+        body.dark-mode .portfolio-style-one-area,
+        body.dark-mode .fun-factor-area,
+        body.dark-mode .timeline-area,
+        body.dark-mode .partner-style-one-area,
+        body.dark-mode .faq-style-one-area,
+        body.dark-mode .contact-style-one-area,
+        body.dark-mode .promot-box-area,
+        body.dark-mode footer {
+            background-color: #121212 !important;
+            background-image: none !important;
+            color: #e6e6e6 !important;
+        }
+        body.dark-mode :root,
+        body.dark-mode {
+            --card-bg: #1c1c1c;
+            --bg-color: #121212;
+            --text-dark: #f0f0f0;
+            --text-light: #a8a8a8;
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+        body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
+        body.dark-mode p, body.dark-mode span, body.dark-mode li,
+        body.dark-mode a:not(.btn-style-regular):not(.visit-btn):not(.icon-btn) {
+            color: #e6e6e6;
+        }
+        body.dark-mode .project-card,
+        body.dark-mode .service-style-one-item,
+        body.dark-mode .timeline-style-one-item,
+        body.dark-mode .accordion-item,
+        body.dark-mode .modal-box,
+        body.dark-mode .form-control {
+            background-color: #1c1c1c !important;
+            color: #e6e6e6 !important;
+            border-color: #333 !important;
+        }
+        body.dark-mode .form-control::placeholder {
+            color: #999;
+        }
+        body.dark-mode .pf-tags span {
+            background: #2a2a2a;
+            color: #ccc;
+        }
+    </style>
+
+    <script>
+        (function() {
+            // Back to top button show/hide + scroll action
+            var backToTop = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Dark mode toggle with saved preference
+            var darkToggleBtn = document.getElementById('darkModeToggle');
+            var icon = darkToggleBtn.querySelector('i');
+
+            function setDarkMode(on) {
+                document.body.classList.toggle('dark-mode', on);
+                icon.classList.toggle('fa-moon', !on);
+                icon.classList.toggle('fa-sun', on);
+                localStorage.setItem('shahfahad-dark-mode', on ? '1' : '0');
+            }
+
+            var saved = localStorage.getItem('shahfahad-dark-mode');
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setDarkMode(saved ? saved === '1' : prefersDark);
+
+            darkToggleBtn.addEventListener('click', function() {
+                setDarkMode(!document.body.classList.contains('dark-mode'));
+            });
+        })();
+    </script>
+    <!-- End Floating Widgets -->
 
 </body>
 </html>
